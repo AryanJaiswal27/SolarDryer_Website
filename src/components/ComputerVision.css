@@ -4,6 +4,12 @@
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+@media (max-width: 768px) {
+  .cv-section {
+    padding: 3rem 1rem;
+  }
+}
+
 .cv-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -274,4 +280,12 @@
   .cv-card {
     padding: 1.5rem;
   }
+  .cv-accuracy-section {
+    padding: 1.5rem;
+  }
+}
+
+.cv-accuracy-section {
+  padding: 2.5rem;
+  margin-top: -1rem; /* The stack has gap: 3rem, so this just adjusts nicely */
 }

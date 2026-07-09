@@ -17,7 +17,7 @@ function App() {
         borderTop: '1px solid rgba(255,255,255,0.05)',
         color: 'var(--text-muted)'
       }}>
-        <p>&copy; 2026 Solar Dryer Research Project. Designed for advanced agricultural solutions.</p>
+        <p>&copy; 2026 Solar Dryer Research Project. Designed for advanced agricultural solutions. Built by Aryan Jaiswal.</p>
       </footer>
     </div>
   );

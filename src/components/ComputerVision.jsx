@@ -176,7 +176,33 @@ const ComputerVision = () => {
               </div>
             </div>
 
+
           </div>
+          
+          {/* Section 4: Breakdown by Variety */}
+          <div className="cv-accuracy-section glass-panel">
+            <div className="cv-card-header" style={{ marginBottom: '1.5rem' }}>
+              <div className="icon-badge">
+                <ScanEye size={24} />
+              </div>
+              <h3>Detection Breakdown by Variety</h3>
+            </div>
+            <ul className="cv-list">
+              <li><em>Aarmor Chillies (190-200)</em>: 100.0% accurate (107/107)</li>
+              <li><em>Bhewapuri Chillies (190-220)</em>: 96.0% accurate (119/124), 5 &gt;1 chillies</li>
+              <li><em>C5 Chillies (200-220)</em>: 100.0% accurate (95/95)</li>
+              <li><em>DD Chillies (300)</em>: 98.0% accurate (98/100), 2 &gt;1 chillies</li>
+              <li><em>Local Teja Chillies (170-180)</em>: 96.5% accurate (83/86), 3 &gt;1 chillies</li>
+              <li><em>Patna Chillies (300-350)</em>: 100.0% accurate (98/98)</li>
+              <li><em>Roshni Chillies (220)</em>: 100.0% accurate (107/107)</li>
+              <li><em>Warangal Teja Chillies (200-220)</em>: 99.1% accurate (107/108), 1 0 chillies</li>
+              <li><em>Wonderlat Chillies (300)</em>: 100.0% accurate (90/90)</li>
+            </ul>
+            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem', marginTop: '1.5rem' }}>
+              With a <em>98.8% success rate</em>, the physical detection heuristic is incredibly robust. The minor false positives (detecting &gt;1 chilli) are primarily attributed to harsh shadows or detached physical stems separating from the main chilli body, which can be mitigated in later machine learning classification stages.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
