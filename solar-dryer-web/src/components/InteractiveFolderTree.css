@@ -1,0 +1,96 @@
+.folder-tree-container {
+  background: #0f172a;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  font-family: 'Fira Code', monospace, Courier, monospace;
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.tree-header {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mac-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.mac-dot.red { background: #ff5f56; }
+.mac-dot.yellow { background: #ffbd2e; }
+.mac-dot.green { background: #27c93f; }
+
+.tree-title {
+  margin-left: 10px;
+  color: var(--text-muted);
+}
+
+.tree-body {
+  padding: 1rem;
+}
+
+.tree-node {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-content {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+  color: #e2e8f0;
+  user-select: none;
+}
+
+.node-content:hover {
+  color: var(--primary);
+}
+
+.node-name {
+  margin-left: 6px;
+}
+
+.node-name.font-semibold {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.caret {
+  color: #64748b;
+  margin-right: 4px;
+}
+
+.folder-icon {
+  color: #64748b;
+}
+
+.folder-icon.open {
+  color: #38bdf8;
+}
+
+.file-icon {
+  margin-right: 4px;
+}
+
+.image-icon { color: #a3e635; }
+.python-icon { color: #facc15; }
+.csv-icon { color: #2dd4bf; }
+.text-icon { color: #cbd5e1; }
+
+.node-spacer {
+  width: 20px;
+}
+
+.node-children {
+  padding-left: 1.5rem;
+  border-left: 1px dashed rgba(255, 255, 255, 0.1);
+  margin-left: 7px;
+}

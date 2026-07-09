@@ -1,0 +1,277 @@
+.cv-section {
+  padding: 6rem 2rem;
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cv-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cv-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.cv-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cv-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cv-layout-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* 1. Slider Section */
+.cv-slider-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.slider-container-wrapper {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-subtitle {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #e2e8f0;
+}
+
+.section-desc {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.pair-selectors {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pair-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pair-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.pair-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* 2. Table Section */
+.cv-table-section {
+  padding: 2.5rem;
+}
+
+.table-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  text-align: center;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cv-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.cv-table th {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  color: var(--text-main);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv-table td {
+  padding: 1rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cv-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cv-table code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: var(--primary);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+}
+
+.cv-table .highlight-cell {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.cv-table tfoot td {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-main);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 3. Side-by-Side Cards */
+.cv-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .cv-cards-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.cv-card {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(234,88,12,0.2));
+  color: var(--primary);
+  border: 1px solid rgba(245,158,11,0.3);
+}
+
+.cv-card h3 {
+  font-size: 1.25rem;
+  color: var(--text-main);
+}
+
+.cv-card p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.cv-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.cv-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.cv-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.cv-list strong {
+  color: var(--text-main);
+}
+
+/* Code Block Styles */
+.code-wrapper {
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-header {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code-placeholder {
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', Courier, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.code-placeholder .keyword { color: #f59e0b; }
+.code-placeholder .function { color: #38bdf8; }
+.code-placeholder .comment { color: #64748b; font-style: italic; }
+.code-placeholder .string { color: #a3e635; }
+
+/* Mobile specific tweaks */
+@media (max-width: 1024px) {
+  .cv-col-center {
+    order: -1; /* Move slider to top on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .cv-card {
+    padding: 1.5rem;
+  }
+}
