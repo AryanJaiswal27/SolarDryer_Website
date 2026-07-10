@@ -99,3 +99,34 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+.model-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: var(--bg-dark);
+}
+
+.model-placeholder p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pulse-btn {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(var(--primary-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0); }
+}

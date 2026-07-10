@@ -12,6 +12,7 @@ function Model({ url }) {
 
 const ModelViewer = () => {
   const [activeModel, setActiveModel] = useState('/models/SeparateDryers-Assembly.gltf');
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const models = [
     { name: 'Dryer with Camera Module', path: '/models/SeparateDryers-Assembly.gltf' },
@@ -47,24 +48,32 @@ const ModelViewer = () => {
       </div>
 
       <div className="canvas-container glass-panel">
-        <Canvas 
-          gl={{ powerPreference: "high-performance", antialias: false, preserveDrawingBuffer: false }}
-          dpr={isMobile ? [0.5, 1] : [1, 1.5]} 
-          camera={{ position: [100, 100, 150], fov: 50 }} 
-          performance={{ min: 0.5 }}
-        >
-          <Suspense fallback={
-            <Html center>
-              <div className="loading" style={{ position: 'static', transform: 'none' }}>Loading...</div>
-            </Html>
-          }>
-            <Stage environment="city" intensity={0.6} shadows={false} adjustCamera={1.4}>
-              <Model url={activeModel} />
-            </Stage>
-          </Suspense>
-          <OrbitControls autoRotate autoRotateSpeed={1} makeDefault />
-        </Canvas>
-        {/* Loading overlay could be handled via useProgress from drei if needed, but simple Suspense inside canvas works */}
+        {!hasLoaded ? (
+          <div className="model-placeholder">
+            <button className="primary-btn pulse-btn" onClick={() => setHasLoaded(true)}>
+              Load 3D Interactive Model
+            </button>
+            <p>Loads ~10MB of High Quality CAD Data</p>
+          </div>
+        ) : (
+          <Canvas 
+            gl={{ powerPreference: "high-performance", antialias: false, preserveDrawingBuffer: false }}
+            dpr={isMobile ? [0.5, 1] : [1, 1.5]} 
+            camera={{ position: [100, 100, 150], fov: 50 }} 
+            performance={{ min: 0.5 }}
+          >
+            <Suspense fallback={
+              <Html center>
+                <div className="loading" style={{ position: 'static', transform: 'none' }}>Loading...</div>
+              </Html>
+            }>
+              <Stage environment="city" intensity={0.6} shadows={false} adjustCamera={1.4}>
+                <Model url={activeModel} />
+              </Stage>
+            </Suspense>
+            <OrbitControls autoRotate autoRotateSpeed={1} makeDefault />
+          </Canvas>
+        )}
       </div>
     </section>
   );

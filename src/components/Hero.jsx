@@ -53,6 +53,8 @@ function SketchModel() {
 
 const Hero = () => {
   const [isMobile, setIsMobile] = React.useState(false);
+  const [inView, setInView] = React.useState(true);
+  const heroRef = React.useRef(null);
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -61,14 +63,27 @@ const Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: '200px 0px', threshold: 0 }
+    );
+    
+    if (heroRef.current) observer.observe(heroRef.current);
+    
+    return () => {
+      if (heroRef.current) observer.unobserve(heroRef.current);
+    };
+  }, []);
+
   const handleScroll = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
 
   return (
-    <section className="hero-section">
-      {/* Remove the heavy 3D background entirely on mobile devices */}
-      {!isMobile && (
+    <section className="hero-section" ref={heroRef}>
+      {/* Remove heavy 3D background entirely on mobile devices or when scrolled out of view */}
+      {!isMobile && inView && (
         <div className="hero-canvas-container animate-fade-in delay-300">
           <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]}>
             <ambientLight intensity={0.5} />
