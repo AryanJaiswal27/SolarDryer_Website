@@ -6,8 +6,14 @@ import './ModelViewer.css';
 // Component to load and display the GLTF model
 function Model({ url }) {
   const { scene } = useGLTF(url);
-  return <primitive object={scene} />;
+  // dispose={null} prevents R3F from destroying the cached scene when switching models
+  return <primitive object={scene} dispose={null} />;
 }
+
+// Preload models for instant switching
+useGLTF.preload('/models/SeparateDryers-Assembly.gltf');
+useGLTF.preload('/models/Stacked_SolarDryer-Assembly.gltf');
+useGLTF.preload('/models/Adv_Solar_Dryer-SolarDryer.gltf');
 
 const ModelViewer = () => {
   const [activeModel, setActiveModel] = useState('/models/SeparateDryers-Assembly.gltf');

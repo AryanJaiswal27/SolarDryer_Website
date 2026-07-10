@@ -26,6 +26,7 @@
   max-width: 1600px;
   align-items: center;
   gap: 2rem;
+  position: relative;
   z-index: 10;
 }
 
