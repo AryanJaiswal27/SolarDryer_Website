@@ -18,6 +18,14 @@ const ModelViewer = () => {
     { name: 'Adv Solar Dryer', path: '/models/Adv_Solar_Dryer-SolarDryer.gltf' }
   ];
 
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="model-section" id="3d-model">
       <div className="model-header">
@@ -38,8 +46,7 @@ const ModelViewer = () => {
       </div>
 
       <div className="canvas-container glass-panel">
-        <Canvas dpr={[1, 1.5]} camera={{ position: [100, 100, 150], fov: 50 }} performance={{ min: 0.5 }}>
-          <color attach="background" args={['#0f172a']} />
+        <Canvas dpr={isMobile ? [0.5, 1] : [1, 1.5]} camera={{ position: [100, 100, 150], fov: 50 }} performance={{ min: 0.5 }}>
           <Suspense fallback={
             <Html center>
               <div className="loading" style={{ position: 'static', transform: 'none' }}>Loading...</div>

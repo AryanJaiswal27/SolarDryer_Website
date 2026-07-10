@@ -43,7 +43,7 @@
 }
 
 .model-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .model-btn.active {
@@ -59,7 +59,7 @@
   border-radius: 16px;
   overflow: hidden;
   position: relative;
-  background: #0f172a; /* Fallback for canvas background */
+  background: var(--bg-darker); /* Fallback for canvas background */
 }
 
 @media (max-width: 768px) {

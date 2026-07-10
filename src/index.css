@@ -1,12 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+
 :root {
-  --primary: #f59e0b; /* Amber 500 */
+  /* Amber is Default */
+  --primary: #f59e0b;
+  --primary-rgb: 245, 158, 11;
   --primary-glow: rgba(245, 158, 11, 0.4);
-  --bg-dark: #0f172a; /* Slate 900 */
-  --bg-darker: #020617; /* Slate 950 */
-  --text-main: #f8fafc; /* Slate 50 */
-  --text-muted: #94a3b8; /* Slate 400 */
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --bg-dark: #f5f3ef;
+  --bg-darker: #eae6e0;
+  --text-main: #111111;
+  --text-muted: #555555;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="emerald"] {
+  --primary: #10b981;
+  --primary-rgb: 16, 185, 129;
+  --primary-glow: rgba(16, 185, 129, 0.4);
+}
+
+[data-theme="rose"] {
+  --primary: #f43f5e;
+  --primary-rgb: 244, 63, 94;
+  --primary-glow: rgba(244, 63, 94, 0.4);
+}
+
+[data-theme="cyan"] {
+  --primary: #06b6d4;
+  --primary-rgb: 6, 182, 212;
+  --primary-glow: rgba(6, 182, 212, 0.4);
 }
 
 * {
@@ -16,59 +38,124 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-darker);
+  font-family: 'Inter', system-ui, Avenir, sans-serif;
+  background-color: var(--bg-dark);
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
+/* Brutalist Panels */
 .glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: var(--bg-darker);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0px;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px var(--primary);
+  border-color: var(--text-main);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #fcd34d, #f59e0b, #ea580c);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
+  display: inline-block;
+  transition: color 0.3s ease;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-darker);
-}
-::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-darker); }
+::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-/* Animations */
+/* Global Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Brutalist Loader */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-dark);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1), visibility 0.8s;
+}
+
+.loader-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-text {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.loader-sweep-line {
+  width: 200px;
+  height: 12px;
+  background: transparent;
+  border: 3px solid var(--text-main);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.loader-sweep-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: var(--primary);
+  animation: brutalBar 1.5s ease-in-out infinite;
+}
+
+@keyframes brutalPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.02) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes brutalBar {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(200%); }
+  100% { transform: translateX(-100%); }
+}
