@@ -67,13 +67,15 @@ const Hero = () => {
 
   return (
     <section className="hero-section">
-      {/* Heavily cap dpr on mobile to stop lag */}
-      <div className="hero-canvas-container animate-fade-in delay-300">
-        <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={isMobile ? [0.5, 1] : [1, 1.5]}>
-          <ambientLight intensity={0.5} />
-          <SketchModel />
-        </Canvas>
-      </div>
+      {/* Remove the heavy 3D background entirely on mobile devices */}
+      {!isMobile && (
+        <div className="hero-canvas-container animate-fade-in delay-300">
+          <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]}>
+            <ambientLight intensity={0.5} />
+            <SketchModel />
+          </Canvas>
+        </div>
+      )}
 
       <div className="hero-grid">
         
